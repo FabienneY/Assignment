@@ -1,0 +1,95 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<div>
+  <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-secondary">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="navbar-brand">
+            <img style="margin-top: -10px;" alt="Logo" src="../../../assets/images/logo.PNG" class="pull-left">
+          </a>
+        </li>
+
+
+        <li class="nav-item dropdown">
+          <a [matMenuTriggerFor]="menu" class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-list">
+              <span class="badge badge-primary"></span>
+            </i>
+            Listes Assignements
+          </a>
+          <mat-menu #menu="matMenu">
+            <a class="dropdown-item" routerLink="/affiche"> <i class="fa fa-check-square-o"></i> Assignments rendus</a>
+            <a class="dropdown-item" routerLink="/affiche"> <i class="fa fa-window-close-o"></i> Assignments non
+              rendus</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/affiche"> <i class="fa fa-bars"></i> Ensemble des assignments</a>
+          </mat-menu>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/add">
+            <i class="fa fa-pencil-square-o">
+              <span class="badge badge-warning"></span>
+            </i>
+            Ajout Assignements
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+  </nav>
+</div>
+<div class="container" fxLayoutAlign="center center" fxLayoutGap="80px">
+  <mat-card *ngIf="assignmentTransmis" class="example-card">
+    <mat-card-header>
+      <img mat-card-avatar src="{{assignmentTransmis.photoProf}}">
+      <mat-card-title>{{assignmentTransmis.nomMatiere}} / {{assignmentTransmis.nom}}</mat-card-title>
+      <mat-card-subtitle>{{assignmentTransmis.dateDeRendu | date}}</mat-card-subtitle>
+    </mat-card-header>
+    <center><img src="{{assignmentTransmis.imgMatiere}}" alt="Photo de la matière"></center><br>
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+      <div><b>Nom de l'élève :</b> {{assignmentTransmis.auteur}} <br>
+        <b>Nom du professeur : </b>{{assignmentTransmis.nomProf}}
+      </div>
+      <div *ngIf="assignmentTransmis.rendu"><b>Note :</b> {{assignmentTransmis.note}} <br>
+        <b>Remarque : </b>{{assignmentTransmis.remarque}}
+      </div>
+    </div>
+    <br>
+    <div id="bottom">
+      <mat-checkbox *ngIf="!assignmentTransmis.rendu" (click)="onAssignmentRendu()">
+        Devoir rendu
+      </mat-checkbox>
+    </div>
+    
+    <br>
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+     
+      <button mat-flat-button color="primary" (click)="onClickEdit()">
+        EDIT
+      </button>
+
+      <button mat-flat-button color="warn" (click)="onDelete()">
+        DELETE
+      </button>
+    </div>
+
+  </mat-card>
+</div>
+<br><br>
+<div class="bottom section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div class="copyright">
+          <p>© <span>2020</span> <a href="#" class="transition">Yede&Coulibaly</a> AngularProjects</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
