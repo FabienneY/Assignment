@@ -5,6 +5,7 @@ import { Assignment } from '../assignment.model';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { Matiere }  from '../matiere.model';
 
 @Component({
   selector: 'app-edit-assigment',
@@ -26,6 +27,16 @@ export class EditAssigmentComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   ThirdFormGroup: FormGroup;
+
+  matieres: Matiere[] = [
+    {nomMatiere: 'oracle', imgMatiere: 'assets/images/oracle.png', nomProf: 'Gabriel Mopolo', photoProf: 'assets/images/Mopolo.png'},
+    {nomMatiere: 'Angular', imgMatiere: 'assets/images/angular.png', nomProf: 'Michel Buffa', photoProf: 'assets/images/Buffa.png'},
+    {nomMatiere: 'Grails', imgMatiere: 'assets/images/grails.png', nomProf: 'Gregory Galli', photoProf: 'assets/images/Galli.jpg'},
+    {nomMatiere: 'java', imgMatiere: 'assets/images/java.png', nomProf: 'Amosse Edouard', photoProf: 'assets/images/Amosse.png'},
+    {nomMatiere: 'Docker', imgMatiere: 'assets/images/docker.jpg', nomProf: 'Kamagate Beman', photoProf: 'assets/images/Beman.jpg'},
+    {nomMatiere: 'Andoid', imgMatiere: 'assets/images/android.png', nomProf: 'Amosse Edouard', photoProf: 'assets/images/Amosse.png'},
+    {nomMatiere: 'R', imgMatiere: 'assets/images/R.png', nomProf: 'Alison Temin', photoProf: 'assets/images/Alison.jpg'},
+  ];
 
   constructor(
     private route: ActivatedRoute,
@@ -97,6 +108,17 @@ export class EditAssigmentComponent implements OnInit {
     if (this.remarque) {
       this.assignment.remarque = this.remarque;
     }
+
+    this.matieres.forEach(a => {
+      if(a.nomMatiere == this.nomMatiere)
+      {
+       this.assignment.nomMatiere=a.nomMatiere;
+       this.assignment.imgMatiere= a.imgMatiere;
+       this.assignment.nomProf=a.nomProf;
+       this.assignment.photoProf=a.photoProf;
+
+      }
+    });
 
     this.assignmentsService
       .updateAssignment(this.assignment)

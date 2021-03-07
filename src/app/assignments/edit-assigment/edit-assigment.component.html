@@ -78,10 +78,14 @@
       <form ngForm class="form" [formGroup]="secondFormGroup" >
         <ng-template matStepLabel>Matière</ng-template>
   
-        <mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Nom de la matière</mat-label>
-          <input matInput [(ngModel)]="nomMatiere" formControlName="ctrlquatre" required>
+          <mat-select [(ngModel)]="nomMatiere" name="nomMatiere" [ngModelOptions]="{standalone: true}">
+            <mat-option *ngFor="let matiere of matieres" value="{{matiere.nomMatiere}}"> {{ matiere.nomMatiere }} </mat-option>
+           
+          </mat-select>
         </mat-form-field>
+       
       </form><br>
       <button mat-flat-button matStepperPrevious>Retour</button>
       <button mat-flat-button matStepperNext>Suivant</button>
