@@ -13,19 +13,13 @@
             </a>
         </li>
 
-        <li class="nav-item dropdown">
-           <a [matMenuTriggerFor]="menu" class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/affiche">
             <i class="fa fa-list">
               <span class="badge badge-primary"></span>
             </i> 
              Listes Assignements
             </a>
-            <mat-menu #menu="matMenu">
-              <a class="dropdown-item" routerLink="/affiche"> <i class="fa fa-check-square-o"></i> Assignments rendus</a>
-              <a class="dropdown-item" routerLink="/affiche"> <i class="fa fa-window-close-o"></i> Assignments non rendus</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" routerLink="/affiche"> <i class="fa fa-bars"></i> Ensemble des assignments</a>
-            </mat-menu>   
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/add">
