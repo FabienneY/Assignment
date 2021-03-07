@@ -44,6 +44,7 @@
 
 <mat-horizontal-stepper #assignmentForm>
   <mat-step>
+    <br>
     <form ngForm class="form" #assignmentForm>
       <ng-template matStepLabel>Devoir</ng-template>
       <mat-form-field>
@@ -61,9 +62,11 @@
       </mat-form-field>
 
     </form>
+    <br>
     <button mat-flat-button matStepperNext>Suivant</button>
   </mat-step>
   <mat-step>
+    <br>
     <form ngForm class="form" #assignmentForm>
       <ng-template matStepLabel>Matière</ng-template>
 
@@ -74,16 +77,19 @@
         </mat-select>
       </mat-form-field>
     </form>
+    <br>
     <button mat-flat-button matStepperPrevious>Retour</button>
-    <button mat-flat-button matStepperNext>Suivant</button>
+    <button mat-flat-button matStepperNext>Enregistrer</button>
   </mat-step>
  
   <mat-step>
+    <br>
+    Voulez vous vraiment Enregistrer cet assignment ?
     <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxLayoutGap="20px">
 
       <button mat-flat-button color="warn" matStepperPrevious>Annuler</button>
 
-      <button mat-flat-button color="primary" (click)="onSubmit($event); assignmentForm.reset();">
+      <button mat-stroked-button mat-flat-button color="primary" (click)="onSubmit($event); assignmentForm.reset();" aria-label="Show an example snack-bar">
         Ajouter un devoir
       </button>
     </div>

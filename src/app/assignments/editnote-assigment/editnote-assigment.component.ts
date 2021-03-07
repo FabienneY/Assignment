@@ -1,31 +1,26 @@
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { Assignment } from '../assignment.model';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
-import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-edit-assigment',
-  templateUrl: './edit-assigment.component.html',
-  styleUrls: ['./edit-assigment.component.css'],
+  selector: 'app-editnote-assigment',
+  templateUrl: './editnote-assigment.component.html',
+  styleUrls: ['./editnote-assigment.component.css'],
   providers: [{
     provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}
   }]
 })
-export class EditAssigmentComponent implements OnInit {
+export class EditnoteAssigmentComponent implements OnInit {
   assignment: Assignment;
   // formulaire
-  nomassignment: string;
-  nomEleve: string;
-  dateDeRendu: Date;
-  nomMatiere: string;
   note:number;
   remarque:string;
   firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  ThirdFormGroup: FormGroup;
+  
 
   constructor(
     private route: ActivatedRoute,
@@ -40,15 +35,7 @@ export class EditAssigmentComponent implements OnInit {
     console.log(this.route.snapshot.fragment);
     this.firstFormGroup = this._formBuilder.group({
       ctrlun: ['', Validators.required],  
-      ctrldeux: ['', Validators.required],  
-      ctrltrois: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      ctrlquatre: ['', Validators.required]
-    });
-    this.ThirdFormGroup = this._formBuilder.group({
-      ctrlcinq: ['', Validators.required], 
-      ctrlsix: ['', Validators.required]
+      ctrldeux: ['', Validators.required]
     });
 
     this.getAssignment();
@@ -63,10 +50,6 @@ export class EditAssigmentComponent implements OnInit {
       //console.log(assignment);
       this.assignment = assignment;
       if (assignment) {
-        this.nomassignment = assignment.nom;
-        this.nomEleve = assignment.auteur;
-        this.dateDeRendu = assignment.dateDeRendu;
-        this.nomMatiere = assignment.nomMatiere;
         this.note = assignment.note;
         this.remarque = assignment.remarque;
       }
@@ -74,22 +57,7 @@ export class EditAssigmentComponent implements OnInit {
   }
 
   onSaveAssignment() {
-    if (this.nomassignment) {
-      this.assignment.nom = this.nomassignment;
-    }
-
-    if (this.nomEleve) {
-      this.assignment.auteur = this.nomEleve;
-    }
-
-    if (this.dateDeRendu) {
-      this.assignment.dateDeRendu = this.dateDeRendu;
-    }
-
-    if (this.nomMatiere) {
-      this.assignment.nomMatiere = this.nomMatiere;
-    }
-
+    
     if (this.note) {
       this.assignment.note = this.note;
     }
@@ -102,7 +70,7 @@ export class EditAssigmentComponent implements OnInit {
       .updateAssignment(this.assignment)
       .subscribe((reponse) => {
         console.log(reponse.message);
-        this._snackBar.open('Modification effectué', '',{
+        this._snackBar.open('Note enregistrée', '',{
           duration: 2000
         });
         this.router.navigate(['/assignment', this.assignment.id]);
@@ -110,3 +78,4 @@ export class EditAssigmentComponent implements OnInit {
       
   }
 }
+

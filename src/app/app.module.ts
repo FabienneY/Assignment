@@ -31,6 +31,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatMenuModule} from '@angular/material/menu';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { EditnoteAssigmentComponent } from './assignments/editnote-assigment/editnote-assigment.component';
 
 const routes: Routes = [
   { path: '', component: ConnexionComponent },
@@ -43,6 +44,11 @@ const routes: Routes = [
     component: EditAssigmentComponent,
     canActivate: [AuthGuard],
   },
+  {
+    path: 'assignment/:id/editnote',
+    component: EditnoteAssigmentComponent,
+    canActivate: [AuthGuard],
+  }
 ];
 @NgModule({
   declarations: [
@@ -53,6 +59,7 @@ const routes: Routes = [
     AddAssignmentComponent,
     EditAssigmentComponent,
     ConnexionComponent,
+    EditnoteAssigmentComponent,
   ],
   imports: [
     BrowserModule,

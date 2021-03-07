@@ -57,7 +57,7 @@ export class AssignmentsService {
   ) {}
 
   //url = 'https://apimbds2021.herokuapp.com/api/assignments';
-  url = 'http://localhost:8010/api/assignments'
+  url = 'https://apiassignments.herokuapp.com/api/assignments'
   //url = 'http://localhost:8010/assignments'
 
   getAssignments(): Observable<Assignment[]> {
@@ -75,7 +75,6 @@ export class AssignmentsService {
 
     /*
     let assignmentTrouve: Assignment;
-
     this.assignments.forEach((a, index) => {
       if (a.id === id) {
         console.log("Assignment trouvé à l'index " + index);

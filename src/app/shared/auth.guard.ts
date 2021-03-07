@@ -23,7 +23,6 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-      this.authService.estconnecte=true;
-    return this.authService.estconnecte=true;
+    return true;
     }
 }

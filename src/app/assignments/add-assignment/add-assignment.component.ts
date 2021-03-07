@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { Assignment } from '../assignment.model';
@@ -29,15 +30,16 @@ export class AddAssignmentComponent implements OnInit {
     {nomMatiere: 'oracle', imgMatiere: 'assets/images/oracle.png', nomProf: 'Gabriel Mopolo', photoProf: 'assets/images/Mopolo.png'},
     {nomMatiere: 'Angular', imgMatiere: 'assets/images/angular.png', nomProf: 'Michel Buffa', photoProf: 'assets/images/Buffa.png'},
     {nomMatiere: 'Grails', imgMatiere: 'assets/images/grails.png', nomProf: 'Gregory Galli', photoProf: 'assets/images/Galli.jpg'},
-    {nomMatiere: 'java', imgMatiere: 'assets/images/java.png', nomProf: 'Amosse Edouard', photoProf: 'assets/images/Amosse.jpg'},
+    {nomMatiere: 'java', imgMatiere: 'assets/images/java.png', nomProf: 'Amosse Edouard', photoProf: 'assets/images/Amosse.png'},
     {nomMatiere: 'Docker', imgMatiere: 'assets/images/docker.jpg', nomProf: 'Kamagate Beman', photoProf: 'assets/images/Beman.jpg'},
-    {nomMatiere: 'Andoid', imgMatiere: 'assets/images/android.png', nomProf: 'Amosse Edouard', photoProf: 'assets/images/Amosse.jpg'},
+    {nomMatiere: 'Andoid', imgMatiere: 'assets/images/android.png', nomProf: 'Amosse Edouard', photoProf: 'assets/images/Amosse.png'},
     {nomMatiere: 'R', imgMatiere: 'assets/images/R.png', nomProf: 'Alison Temin', photoProf: 'assets/images/Alison.jpg'},
   ];
 
   constructor(
     private assignmentsService: AssignmentsService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {}
@@ -78,6 +80,9 @@ export class AddAssignmentComponent implements OnInit {
       .addAssignment(newAssignment)
       .subscribe((reponse) => {
         console.log(reponse.message);
+        this._snackBar.open('Assignment enregistré enregistrée', '',{
+          duration: 2000
+        });
 
         // il va falloir naviguer de nouveau vers la page d'accueil
         // on va devoir faire l'équivalent du routerLink="/home" mais

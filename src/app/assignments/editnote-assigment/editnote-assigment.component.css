@@ -1,47 +1,18 @@
 @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
-.container {
+.form {
   display: flex;
   flex-direction: column;
+  margin: 5px;
 }
 
-#bottom {
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
- margin: 2%;
-}
-
-.rendu {
-  color: green;
-}
-
-.nonrendu {
-  color: red;
-  background-color: yellow;
-  border: 2px dashed orange;
-  padding: 2px;
-}
-
-
-.gros {
-  font-size: 40px;
-}
-
-table {
-  width: 100%;
+.mat-stepper-horizontal {
+  margin-top: 8px;
 }
 
 .mat-form-field {
-  font-size: 14px;
-  width: 100%;
+  margin-top: 16px;
 }
-
-td, th {
-  width: 25%;
-}
-
-
 
 .navbar-icon-top .navbar-nav .nav-link > .fa {
   position: relative;
@@ -155,14 +126,6 @@ td, th {
   .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link > .fa > .badge {
     top: -7px;
   }
-}
-
-.example-card {
-  max-width: 250px;
-}
-
-.example-header-image {
-  background-size: cover;
 }
 
 a:hover{

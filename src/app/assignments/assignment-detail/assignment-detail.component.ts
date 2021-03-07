@@ -49,13 +49,8 @@ export class AssignmentDetailComponent implements OnInit {
         console.log(message);
 
         // on retourne à la page d'accueil
-        this.router.navigate(['/assignment', this.assignmentTransmis.id, 'edit']);
+        this.router.navigate(['/assignment', this.assignmentTransmis.id, 'editnote']);
       });
-  }
-
-  onClickNoter(){
-    let id: number = +this.route.snapshot.params.id;
-    this.router.navigate(['/assignment/{{assignmentTransmis.id}}']);
   }
 
   onDelete() {

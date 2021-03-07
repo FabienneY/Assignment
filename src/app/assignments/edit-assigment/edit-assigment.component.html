@@ -48,7 +48,7 @@
   <br>
 
   <mat-horizontal-stepper #stepper>
-    <mat-step [stepControl]="firstFormGroup" *ngIf= 'assignment.remarque != ""'>
+    <mat-step [stepControl]="firstFormGroup">
       <br>
       <form ngForm class="form" [formGroup]="firstFormGroup" >
         <ng-template matStepLabel>Devoir</ng-template>
@@ -73,7 +73,7 @@
       </form><br>
       <button mat-flat-button matStepperNext>Suivant</button>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup" *ngIf= 'assignment.remarque != ""'>
+    <mat-step [stepControl]="secondFormGroup">
       <br>
       <form ngForm class="form" [formGroup]="secondFormGroup" >
         <ng-template matStepLabel>Matière</ng-template>
@@ -107,10 +107,10 @@
 
     <mat-step>
       <br>
-      <center> Voulez vous vraiment Modifier </center>
+       <center>Voulez vous vraiment Modifier ?</center>  
       <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxLayoutGap="20px">
         
-        <button mat-flat-button color="primary" (click)="onSaveAssignment()">Oui</button>
+        <button mat-stroked-button mat-flat-button color="primary" (click)="onSaveAssignment()" aria-label="Show an example snack-bar">Oui</button>
         <button mat-flat-button color="warn" matStepperPrevious>Non</button>
       </div>
     </mat-step>
